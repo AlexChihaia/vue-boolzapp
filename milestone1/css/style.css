@@ -28,6 +28,8 @@ body {
 
 .ac-container {
     width: 70%;
+    height: 90%;
+    max-height: 850px;
     margin: auto;
     background-color: #ffffff;
     display: flex;
@@ -38,7 +40,6 @@ body {
 
 .col-left {
     width: 480px;
-    overflow: hidden;
 }
 
 .col-right {
@@ -50,31 +51,33 @@ body {
     padding: 10px 20px;
 }
 
-.profile-container {
+.ac-profile-container {
     width: 50px;
     height: 50px;
-    border-radius: 50%;
     background-color: #ffffff;
+    border-radius: 50%;
 }
 
-.profile-container i {
+.ac-profile-container i {
     color: #8edafc;
 }
 
 .ac-notification-alert {
-    height: 80px;
+
     background-color: #8edafc;
-    padding: 0 20px;
+    padding: 15px 20px;
 }
 
 
 
 .ac-contacts {
-    overflow: auto;
+    flex-grow: 1;
+    overflow: hidden;
 }
 
 .ac-contacts-body {
-    overflow-y: auto;
+    overflow-y: scroll;
+    max-height: 100%;
 }
 
 .message-body {
@@ -96,7 +99,9 @@ a {
 
 img {
     width: 100%;
+    object-fit: cover;
     border-radius: 50%;
+
 }
 
 i {
