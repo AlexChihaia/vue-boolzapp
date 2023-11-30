@@ -34,8 +34,12 @@
 <body>
 
     <div id="app">
-        <div class="ac-container">
-            <div class="col-left ">
+        <!-- window container -->
+        <div class="ac-container ">
+
+            <!-- left column -->
+            <div class="col-left d-flex flex-column">
+                <!-- my profile -->
                 <div class="profile-bar d-flex justify-content-between align-items-center beige-bar">
                     <div class="profile-info d-flex align-items-center">
                         <div class="profile-container">
@@ -54,6 +58,8 @@
 
                     </div>
                 </div>
+                <!-- /my profile -->
+                <!-- notifications -->
                 <div class="ac-notification-alert d-flex align-items-center">
                     <div class="profile-container d-flex align-items-center">
                         <i class="fa-solid fa-bell-slash"></i>
@@ -63,29 +69,35 @@
                         <a href="#">Attiva notifiche desktop</a>
                     </div>
                 </div>
-                <div class=" ac-input input-group mx-2 my-2">
-                    <span class="input-group-text p-2 bg-white rounded-0"><i
+                <!-- /notifications -->
+                <!-- search bar -->
+                <div class=" ac-input input-group px-2 py-2 bg-light ">
+                    <span class="input-group-text p-2 bg-white rounded-0 border-0"><i
                             class="fa-solid fa-magnifying-glass"></i></span>
-                    <input type="search" class="form-control ps-0 shadow-none bg-white border-start-0 rounded-0"
+                    <input type="search" class="form-control ps-0 shadow-none bg-white border-0 rounded-0"
                         placeholder="Cerca o inizia una nuova chat" aria-label="Search" aria-describedby="basic-addon1">
                 </div>
+                <!-- /search bar -->
+                <!-- contacts -->
+                <div class="ac-contacts">
+                    <ul class="left-main ac-contacts-body d-flex flex-column">
+                        <li v-for="(contact,index) in contacts" class="profile-bar">
+                            <div class="profile-info d-flex ">
+                                <div class="profile-container">
+                                    <img :src="contacts[index].avatar" alt="Picture">
 
-                <ul class="left-main ac-contacts-body d-flex flex-column">
-                    <li v-for="(contact,index) in contacts" class="profile-bar">
-                        <div class="profile-info d-flex ">
-                            <div class="profile-container">
-                                <img :src="contacts[index].avatar" alt="Picture">
-
+                                </div>
+                                <div class="name">
+                                    {{contact.name}}
+                                </div>
                             </div>
-                            <div class="name">
-                                {{contact.name}}
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-
-
+                        </li>
+                    </ul>
+                </div>
+                <!-- /contacts -->
             </div>
+            <!-- /left column -->
+            <!-- right column -->
             <div class="col-right d-flex flex-column ">
                 <div class="profile-bar d-flex justify-content-between align-items-center beige-bar">
                     <div class="profile-info d-flex align-items-center">
@@ -112,11 +124,11 @@
 
                 </div>
             </div>
+            <!-- /right column -->
         </div>
-
-
+        <!-- /window container -->
     </div>
-    </div>
+
 
 
 
