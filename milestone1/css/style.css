@@ -28,7 +28,6 @@ body {
 
 .ac-container {
     width: 70%;
-    height: 90%;
     max-height: 850px;
     margin: auto;
     background-color: #ffffff;
@@ -47,7 +46,6 @@ body {
 }
 
 .profile-bar {
-
     padding: 10px 20px;
 }
 
@@ -91,6 +89,26 @@ body {
 
 .message-bar {
     height: 70px;
+    width: 100%;
+}
+
+.ac-message-input {
+    width: 80%;
+}
+
+.ac-input {
+    width: 100%;
+    border: 1px solid #b1b1b1;
+    border-radius: 5px;
+    padding: 5px 0;
+}
+
+.emoji {
+    padding-left: 20px;
+}
+
+.audio-message {
+    padding-right: 36px;
 }
 
 a {
