@@ -38,6 +38,7 @@ body {
 
 .col-left {
     width: 480px;
+    overflow: hidden;
 }
 
 .col-right {
@@ -45,8 +46,8 @@ body {
 }
 
 .profile-bar {
-    height: 70px;
-    padding: 0 20px;
+
+    padding: 10px 20px;
 }
 
 .profile-container {
@@ -69,8 +70,7 @@ body {
 
 
 .ac-contacts {
-    flex-grow: 1;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .ac-contacts-body {
