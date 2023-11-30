@@ -81,7 +81,6 @@ body {
 .message-body {
     flex-grow: 1;
     background-image: url(/milestone1/img/mine.jpg);
-    padding: 0 100px;
 }
 
 .beige-bar {
@@ -129,10 +128,4 @@ i {
     color: #b1b1b1;
 }
 
-/* js utility */
-
-.ac-message {
-    border-radius: 10px;
-    padding-left: 15px;
-
-}
+/* utility */

@@ -82,8 +82,7 @@
 
                 <div class="ac-contacts">
                     <ul class="left-main ac-contacts-body d-flex flex-column">
-                        <li role="button" v-for="(contact,index) in contacts" class="profile-bar" :key="contact.name"
-                            @click="setActiveContact(contact)">
+                        <li v-for="(contact,index) in contacts" class="profile-bar">
                             <div class="profile-info d-flex ">
                                 <div class="ac-profile-container">
                                     <img :src="contacts[index].avatar" alt="Picture">
@@ -124,9 +123,7 @@
                     </div>
                 </div>
                 <div class="message-body me-3">
-                    <div class="ac-message" v-for="(message , index) in activeContact.messages" :key="message">
-                        <p>{{ activeContact.messages{index}.message }}</p>
-                    </div>
+                    aa
                 </div>
                 <div class="message-bar beige-bar d-flex justify-content-between align-items-center">
                     <div class="emoji">
