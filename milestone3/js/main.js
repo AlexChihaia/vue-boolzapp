@@ -167,30 +167,8 @@ createApp({
                         }
                     ],
                 }
-            ],
-            activeContact: 0,
-
-
+            ]
         }
-
-    },
-    computed: {
-        lastMessages() {
-            return this.contacts.map(contact => {
-                return contact.messages[contact.messages.length - 1];
-            });
-        },
-
-    },
-    methods: {
-        setActiveContact(index) {
-            this.activeContact = index;
-
-            console.log(this.activeContact);
-        },
-    },
-    mounted() {
-        this.activeContact = this.contacts[0];
     },
 
 }).mount('#app');
