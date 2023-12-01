@@ -131,7 +131,7 @@
                 </div>
                 <ul class="message-body me-3">
                     <li v-for="(message,index) in contacts[activeContact].messages" class="ac-message"
-                        :class="{recieved : contacts[activeContact].messages[index].status === 'recieved'} , {sent : contacts[activeContact].messages.status === 'sent'}">
+                        :class=" {received : message.status === 'received'} , {sent : message.status === 'sent'}">
                         <p>{{contacts[activeContact].messages[index].message}}</p>
                     </li>
                 </ul>
