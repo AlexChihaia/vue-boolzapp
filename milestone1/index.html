@@ -46,8 +46,8 @@
                             <img src="img/avatar_io.jpg" alt="My pic">
 
                         </div>
-                        <div class="name">
-                            Alex Chihaia
+                        <div class="ac-info ">
+                            <p>Alex Chihaia</p>
 
                         </div>
                     </div>
@@ -81,17 +81,22 @@
                 <!-- contacts -->
 
                 <div class="ac-contacts">
-                    <ul class="left-main ac-contacts-body d-flex flex-column">
-                        <li role="button" v-for="(contact,index) in contacts" class="profile-bar" :key="contact.name"
-                            @click="setActiveContact(contact)">
+                    <ul class="px-0 ac-contacts-body d-flex flex-column">
+                        <li role="button" v-for="(contact, index) in contacts"
+                            class="d-flex justify-content-between profile-bar ps-3"
+                            :class="{'active': activeContact === index}" @click="setActiveContact(index)">
                             <div class="profile-info d-flex ">
                                 <div class="ac-profile-container">
-                                    <img :src="contacts[index].avatar" alt="Picture">
+                                    <img :src="contact.avatar" :alt="contact.name">
 
                                 </div>
-                                <div class="name">
-                                    {{contact.name}}
+                                <div class="ac-info">
+                                    <p class="py-0 my-0">{{contact.name}}</p>
+                                    <p class="ac-last-message">ultimo message</p>
                                 </div>
+                            </div>
+                            <div class="ac-date">
+                                <p class="ac-date-p">date</p>
                             </div>
                         </li>
                     </ul>
@@ -108,13 +113,14 @@
                 <div class="profile-bar d-flex justify-content-between align-items-center beige-bar">
                     <div class="profile-info d-flex align-items-center">
                         <div class="ac-profile-container">
-                            <img src="img/avatar_io.jpg" alt="My pic">
+                            <img :src="contacts[activeContact].avatar" alt="My pic">
 
                         </div>
-                        <div class="name">
-                            Alex Chihaia
-
+                        <div class="ac-info">
+                            <p class="ac-name pt-2 py-0 my-0">{{contacts[activeContact].name}}</p>
+                            <p class="ac-last-access ">ultimo accesso</p>
                         </div>
+
                     </div>
                     <div class="ac-tools ">
                         <i class="fa-solid fa-magnifying-glass"></i>
@@ -123,11 +129,12 @@
 
                     </div>
                 </div>
-                <div class="message-body me-3">
-                    <div class="ac-message" v-for="(message , index) in activeContact.messages" :key="message">
-                        <p>{{ activeContact.messages{index}.message }}</p>
-                    </div>
-                </div>
+                <ul class="message-body me-3">
+                    <li v-for="(message,index) in contacts[activeContact].messages" class="ac-message"
+                        :class="{recieved : contacts[activeContact].messages[index].status === 'recieved'} , {sent : contacts[activeContact].messages.status === 'sent'}">
+                        <p>{{contacts[activeContact].messages[index].message}}</p>
+                    </li>
+                </ul>
                 <div class="message-bar beige-bar d-flex justify-content-between align-items-center">
                     <div class="emoji">
                         <i class='fa-regular fa-face-smile'></i>

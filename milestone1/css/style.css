@@ -49,6 +49,10 @@ body {
     padding: 10px 20px;
 }
 
+.profile-bar.active {
+    background-color: #e9ebeb;
+}
+
 .ac-profile-container {
     width: 50px;
     height: 50px;
@@ -112,7 +116,7 @@ body {
     padding-right: 36px;
 }
 
-a {
+.ac-notification-alert a {
     color: #4f879e;
 }
 
@@ -129,10 +133,30 @@ i {
     color: #b1b1b1;
 }
 
+.ac-last-message,
+.ac-date-p {
+    font-size: 0.8rem;
+    color: #6b7389;
+}
+
+.ac-last-access {
+    font-size: 0.975rem;
+    color: #6b7389;
+}
+
+
+
 /* js utility */
 
 .ac-message {
     border-radius: 10px;
-    padding-left: 15px;
+    padding-left: 20px;
+}
 
+.recieved {
+    background-color: #ffffff;
+}
+
+.sent {
+    background-color: #d5f9ba;
 }

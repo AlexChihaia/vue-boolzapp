@@ -168,14 +168,13 @@ createApp({
                     ],
                 }
             ],
-            activeContact: null,
-            activeMessages: [],
+            activeContact: 0,
         }
 
     },
     methods: {
-        setActiveContact(contact) {
-            this.activeContact = contact;
+        setActiveContact(index) {
+            this.activeContact = index;
 
             console.log(this.activeContact);
         },
