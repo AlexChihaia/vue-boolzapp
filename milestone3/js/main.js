@@ -2,6 +2,7 @@
 
 const { createApp } = Vue;
 
+
 createApp({
     data() {
         return {
@@ -167,8 +168,63 @@ createApp({
                         }
                     ],
                 }
-            ]
+            ],
+            activeContact: 0,
+            newMessage: {
+                message: "",
+                sender: 0,
+                receiver: 0,
+                status: "sent",
+                date: "",
+            },
+
+
         }
+
+    },
+    computed: {
+        lastMessages() {
+            return this.contacts.map((contact) => {
+                if (contact.messages.length > 0) {
+                    return contact.messages[contact.messages.length - 1];
+                } else {
+                    return {
+                        message: "",
+                        date: "",
+                    };
+                }
+            });
+        },
+    },
+    methods: {
+        setActiveContact(index) {
+            this.activeContact = index;
+
+            console.log(this.activeContact);
+        },
+
+        addMessage(activeContact) {
+            this.newMessage.sender = 0;
+            this.newMessage.receiver = activeContact;
+            this.newMessage.date = luxon.DateTime.now().toFormat("HH:mm:ss");
+
+            this.contacts[activeContact].messages.push(Object.assign({}, this.newMessage));
+            this.newMessage.message = "";
+            setTimeout(() => {
+                this.contacts[activeContact].messages.push({
+                    message: "OK",
+                    sender: activeContact,
+                    receiver: 0,
+                    status: "received",
+                    date: luxon.DateTime.now().toFormat("HH:mm:ss"),
+                });
+            }, 1000);
+        },
+
+    },
+
+    mounted() {
+        this.activeContact = this.contacts[0];
     },
 
 }).mount('#app');
