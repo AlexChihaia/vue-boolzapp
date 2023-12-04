@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolzapp</title>
+
+
+
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- font awesome -->
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- /google font -->
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- /bootstrap -->
+
+    <!-- css -->
+    <link rel="stylesheet" href="/milestone1/css/style.css">
+    <!-- /css -->
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- window container -->
+        <div class="ac-container ">
+
+            <!-- left column -->
+            <div class="col-left d-flex flex-column">
+                <!-- my profile -->
+                <div class="profile-bar d-flex justify-content-between align-items-center beige-bar">
+                    <div class="profile-info d-flex align-items-center">
+                        <div class="ac-profile-container">
+                            <img src="img/avatar_io.jpg" alt="My pic">
+
+                        </div>
+                        <div class="ac-info ">
+                            <p>Alex Chihaia</p>
+
+                        </div>
+                    </div>
+                    <div class="ac-tools ">
+                        <i class="fa-solid fa-circle-notch"></i>
+                        <i class="fa-solid fa-message"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+
+                    </div>
+                </div>
+                <!-- /my profile -->
+                <!-- notifications -->
+                <div class="ac-notification-alert d-flex align-items-center">
+                    <div class="ac-profile-container d-flex align-items-center">
+                        <i class="fa-solid fa-bell-slash"></i>
+                    </div>
+                    <div class="mx-2">
+                        <p class="mb-0 ">Ricevi notifiche di nuovi messaggi</p>
+                        <a href="#">Attiva notifiche desktop</a>
+                    </div>
+                </div>
+                <!-- /notifications -->
+                <!-- search bar -->
+                <div class=" input-group px-2 py-2 bg-light ">
+                    <span class="input-group-text p-2 bg-white rounded-0 border-0"><i
+                            class="fa-solid fa-magnifying-glass"></i></span>
+                    <input type="search" v-model="searchContact"
+                        class="form-control ps-0 shadow-none bg-white border-0 rounded-0"
+                        placeholder="Cerca o inizia una nuova chat" aria-label="Search" aria-describedby="basic-addon1">
+                </div>
+                <!-- /search bar -->
+                <!-- contacts -->
+
+                <div class="ac-contacts">
+                    <ul class="px-0 ac-contacts-body d-flex flex-column">
+                        <li role="button" v-for="(contact, index) in filteredContacts"
+                            class="d-flex justify-content-between profile-bar ps-3"
+                            :class="{'active': activeContact === index}" @click="setActiveContact(index)">
+                            <div class="profile-info d-flex ">
+                                <div class="ac-profile-container">
+                                    <img :src="contact.avatar" :alt="contact.name">
+
+                                </div>
+                                <div class="ac-info">
+                                    <p class="py-0 my-0">{{contact.name}}</p>
+                                    <p class="ac-last-message">{{ lastMessages[index].message }}</p>
+                                </div>
+                            </div>
+                            <div class="ac-date">
+                                <p class="ac-date-p">{{lastMessages[index].date}}</p>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+
+
+
+                <!-- /contacts -->
+            </div>
+            <!-- /left column -->
+            <!-- right column -->
+            <div class="col-right d-flex flex-column ">
+                <div class="profile-bar d-flex justify-content-between align-items-center beige-bar">
+                    <div class="profile-info d-flex align-items-center">
+                        <div class="ac-profile-container">
+                            <img :src="contacts[activeContact].avatar" :alt="contacts[activeContact.name]">
+
+                        </div>
+                        <div class="ac-info">
+                            <p class="ac-name pt-2 py-0 my-0">{{contacts[activeContact].name}}</p>
+                            <p class="ac-last-access ">ultimo accesso: {{lastMessages[activeContact].date}}</p>
+                        </div>
+
+                    </div>
+                    <div class="ac-tools ">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-solid fa-paperclip"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+
+                    </div>
+                </div>
+                <ul class="message-body me-3 mb-0 d-flex flex-column" ref="messageList">
+                    <li v-for="(message,index) in contacts[activeContact].messages"
+                        class="ac-message d-flex flex-column justify-content-center"
+                        :class=" {received : message.status === 'received'} , {sent : message.status === 'sent'}">
+                        <p @click="showDropdown = !showDropdown" class="mt-3 mb-0">{{message.message}}</p>
+                        <div v-if="showDropdown" @click="hideDropdown">
+                            <button class="btn btn-primary" @click="deleteMessage(index)">Delete Message</button>
+                        </div>
+                        <span
+                            class="ac-date-p my-0 py-0 align-self-end">{{contacts[activeContact].messages[index].date}}</span>
+                    </li>
+                </ul>
+                <div class="message-bar beige-bar d-flex justify-content-between align-items-center">
+                    <div class="emoji">
+                        <i class='fa-regular fa-face-smile'></i>
+                    </div>
+                    <div class="ac-message-input">
+                        <input type="text" v-model="this.newMessage.message" @keyup.enter="addMessage(activeContact)"
+                            class="ac-input">
+
+                    </div>
+                    <div class="audio-message">
+                        <i class='fa-solid fa-microphone'></i>
+                    </div>
+
+                </div>
+            </div>
+            <!-- /right column -->
+        </div>
+        <!-- /window container -->
+    </div>
+
+
+
+
+
+
+
+
+    <!-- luxon -->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
+    <!-- /luxon -->
+    <!-- vue js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- /vue js -->
+
+    <!-- my js -->
+    <script src="js/main.js"></script>
+    <!-- /my js -->
+</body>
+
+</html>
