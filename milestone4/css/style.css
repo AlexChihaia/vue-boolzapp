@@ -1,0 +1,167 @@
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+
+/* font */
+
+* {
+    font-family: 'Lato', sans-serif;
+}
+
+
+/* common */
+
+body {
+
+    background-image: url('/milestone1/img/mine.jpg');
+    background-image: linear-gradient(to bottom, #009688 15%, #dddbd2 0);
+    height: 100vh;
+    width: 100vw;
+    padding-top: 40px;
+}
+
+
+.ac-container {
+    width: 70%;
+    max-height: 850px;
+    margin: auto;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.col-left {
+    width: 480px;
+}
+
+.col-right {
+    flex-grow: 1;
+}
+
+.profile-bar {
+    padding: 10px 20px;
+}
+
+.profile-bar.active {
+    background-color: #e9ebeb;
+}
+
+.ac-profile-container {
+    width: 50px;
+    height: 50px;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+.ac-profile-container i {
+    color: #8edafc;
+}
+
+.ac-notification-alert {
+
+    background-color: #8edafc;
+    padding: 15px 20px;
+}
+
+
+
+.ac-contacts {
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.ac-contacts-body {
+    overflow-y: scroll;
+    max-height: 100%;
+}
+
+.message-body {
+    flex-grow: 1;
+    background-image: url(/milestone1/img/mine.jpg);
+    padding: 0 100px;
+    gap: 15px;
+}
+
+.beige-bar {
+    background-color: #eaeaea;
+}
+
+.message-bar {
+    height: 70px;
+    width: 100%;
+}
+
+.ac-message-input {
+    width: 80%;
+}
+
+.ac-input {
+    width: 100%;
+    border: 1px solid #b1b1b1;
+    border-radius: 5px;
+    padding: 5px 0;
+}
+
+.emoji {
+    padding-left: 20px;
+}
+
+.audio-message {
+    padding-right: 36px;
+}
+
+.ac-notification-alert a {
+    color: #4f879e;
+}
+
+img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+
+}
+
+i {
+    font-size: 1.5rem;
+    margin-left: 10px;
+    color: #b1b1b1;
+}
+
+.ac-last-message,
+.ac-date-p {
+    font-size: 0.7rem;
+    color: #6b7389;
+}
+
+.ac-last-access {
+    font-size: 0.975rem;
+    color: #6b7389;
+}
+
+
+
+/* js utility */
+
+.ac-message {
+    border-radius: 10px;
+    padding-left: 20px;
+    width: 40%;
+    margin-top: 15px;
+}
+
+.received {
+    background-color: #ffffff;
+
+}
+
+.sent {
+    background-color: #d5f9ba;
+    align-self: flex-end;
+}
